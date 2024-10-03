@@ -456,26 +456,123 @@ module prepare (input logic [31:0] M0, M1, M2, M3,
 
    // sigma 1 (see bottom of page 6)
    sigma1 sig1_1 (W14, W14_sigma1_out);
-
+   
 
    // fill in other sigma1 blocks
+   sigma1 sig1_2 (W15, W15_sigma1_out);
+   sigma1 sig1_3 (W16, W16_sigma1_out);
+   sigma1 sig1_4 (W17, W17_sigma1_out);
+   sigma1 sig1_5 (W18, W18_sigma1_out);
+   sigma1 sig1_6 (W19, W19_sigma1_out);
+   sigma1 sig1_7 (W20, W20_sigma1_out);
+   sigma1 sig1_8 (W21, W21_sigma1_out);
+   sigma1 sig1_9 (W22, W22_sigma1_out);
+   sigma1 sig1_10 (W23, W23_sigma1_out);
+   sigma1 sig1_11 (W24, W24_sigma1_out);
+   sigma1 sig1_12 (W25, W25_sigma1_out);
+   sigma1 sig1_13 (W26, W26_sigma1_out);
+   sigma1 sig1_14 (W27, W27_sigma1_out);
+   sigma1 sig1_15 (W28, W28_sigma1_out);
+   sigma1 sig1_16 (W29, W29_sigma1_out);
+   sigma1 sig1_17 (W30, W30_sigma1_out);
+   sigma1 sig1_18 (W31, W31_sigma1_out);
+   sigma1 sig1_19 (W32, W32_sigma1_out);
+   sigma1 sig1_20 (W33, W33_sigma1_out);
+   sigma1 sig1_21 (W34, W34_sigma1_out);
+   sigma1 sig1_22 (W35, W35_sigma1_out);
+   sigma1 sig1_23 (W36, W36_sigma1_out);
+   sigma1 sig1_24 (W37, W37_sigma1_out);
+   sigma1 sig1_25 (W38, W38_sigma1_out);
+   sigma1 sig1_26 (W39, W39_sigma1_out);
+   sigma1 sig1_27 (W40, W40_sigma1_out);
+   sigma1 sig1_28 (W41, W41_sigma1_out);
+   sigma1 sig1_29 (W42, W42_sigma1_out);
+   sigma1 sig1_30 (W43, W43_sigma1_out);
+   sigma1 sig1_31 (W44, W44_sigma1_out);
+   sigma1 sig1_32 (W45, W45_sigma1_out);
+   sigma1 sig1_33 (W46, W46_sigma1_out);
+   sigma1 sig1_34 (W47, W47_sigma1_out);
+   sigma1 sig1_35 (W48, W48_sigma1_out);
+   sigma1 sig1_36 (W49, W49_sigma1_out);
+   sigma1 sig1_37 (W50, W50_sigma1_out);
+   sigma1 sig1_38 (W51, W51_sigma1_out);
+   sigma1 sig1_39 (W52, W52_sigma1_out);
+   sigma1 sig1_40 (W53, W53_sigma1_out);
+   sigma1 sig1_41 (W54, W54_sigma1_out);
+   sigma1 sig1_42 (W55, W55_sigma1_out);
+   sigma1 sig1_43 (W56, W56_sigma1_out);
+   sigma1 sig1_44 (W57, W57_sigma1_out);
+   sigma1 sig1_45 (W58, W58_sigma1_out);
+   sigma1 sig1_46 (W59, W59_sigma1_out);
+   sigma1 sig1_47 (W60, W60_sigma1_out);
+   sigma1 sig1_48 (W61, W61_sigma1_out);
 
+   
    // sigma 0 (see bottom of page 6)
    sigma0 sig0_1 (W1, W1_sigma0_out);
 
-   // fill in other sigma0 blocks
+   
 
-   // Equation for W_i (top of page 7)3
-   assign W16 = W14_sigma1_out + W9 + W1_sigma0_out + W0;
-   assign W17 = W15_sigma1_out + W10 + W2_sigma0_out + W1;
-   assign W18 = W16_sigma1_out + W11 + W3_sigma0_out + W2;
-   assign W19 = W17_sigma1_out + W12 + W4_sigma0_out + W3;
-   assign W20 = W18_sigma1_out + W13 + W5_sigma0_out + W4;
-   assign W21 = W19_sigma1_out + W14 + W6_sigma0_out + W5;
-   assign W22 = W20_sigma1_out + W15 + W7_sigma0_out + W6;
-   assign W23 = W21_sigma1_out + W16 + W8_sigma0_out + W7;
-   assign W24 = W22_sigma1_out + W17 + W9_sigma0_out + W8;
-   assign W25 = W23_sigma1_out + W18 + W10_sigma0_out + W9;
+   // fill in other sigma0 blocks
+   sigma0 sig0_2 (W2, W2_sigma0_out);
+   sigma0 sig0_3 (W3, W3_sigma0_out);
+   sigma0 sig0_4 (W4, W4_sigma0_out);
+   sigma0 sig0_5 (W5, W5_sigma0_out);
+   sigma0 sig0_6 (W6, W6_sigma0_out);
+   sigma0 sig0_7 (W7, W7_sigma0_out);
+   sigma0 sig0_8 (W8, W8_sigma0_out);
+   sigma0 sig0_9 (W9, W9_sigma0_out);
+   sigma0 sig0_10 (W10, W10_sigma0_out);
+   sigma0 sig0_11 (W11, W11_sigma0_out);
+   sigma0 sig0_12 (W12, W12_sigma0_out);
+   sigma0 sig0_13 (W13, W13_sigma0_out);
+   sigma0 sig0_14 (W14, W14_sigma0_out);
+   sigma0 sig0_15 (W15, W15_sigma0_out);
+   sigma0 sig0_16 (W16, W16_sigma0_out);
+   sigma0 sig0_17 (W17, W17_sigma0_out);
+   sigma0 sig0_18 (W18, W18_sigma0_out);
+   sigma0 sig0_19 (W19, W19_sigma0_out);
+   sigma0 sig0_20 (W20, W20_sigma0_out);
+   sigma0 sig0_21 (W21, W21_sigma0_out);
+   sigma0 sig0_22 (W22, W22_sigma0_out);
+   sigma0 sig0_23 (W23, W23_sigma0_out);
+   sigma0 sig0_24 (W24, W24_sigma0_out);
+   sigma0 sig0_25 (W25, W25_sigma0_out);
+   sigma0 sig0_26 (W26, W26_sigma0_out);
+   sigma0 sig0_27 (W27, W27_sigma0_out);
+   sigma0 sig0_28 (W28, W28_sigma0_out);
+   sigma0 sig0_29 (W29, W29_sigma0_out);
+   sigma0 sig0_30 (W30, W30_sigma0_out);
+   sigma0 sig0_31 (W31, W31_sigma0_out);
+   sigma0 sig0_32 (W32, W32_sigma0_out);
+   sigma0 sig0_33 (W33, W33_sigma0_out);
+   sigma0 sig0_34 (W34, W34_sigma0_out);
+   sigma0 sig0_35 (W35, W35_sigma0_out);
+   sigma0 sig0_36 (W36, W36_sigma0_out);
+   sigma0 sig0_37 (W37, W37_sigma0_out);
+   sigma0 sig0_38 (W38, W38_sigma0_out);
+   sigma0 sig0_39 (W39, W39_sigma0_out);
+   sigma0 sig0_40 (W40, W40_sigma0_out);
+   sigma0 sig0_41 (W41, W41_sigma0_out);
+   sigma0 sig0_42 (W42, W42_sigma0_out);
+   sigma0 sig0_43 (W43, W43_sigma0_out);
+   sigma0 sig0_44 (W44, W44_sigma0_out);
+   sigma0 sig0_45 (W45, W45_sigma0_out);
+   sigma0 sig0_46 (W46, W46_sigma0_out);
+   sigma0 sig0_47 (W47, W47_sigma0_out);
+   sigma0 sig0_48 (W48, W48_sigma0_out);
+
+   // Equation for _i (wtop of page 7)3
+   assign W16 = W14_sigma1_out + W9 +  W1 _sigma0_out + W0;
+   assign W17 = W15_sigma1_out + W10 + W2 _sigma0_out + W 1 ;
+   assign W18 = W16_sigma1_out + W11 + W3 _sigma0_out + W 2 ;
+   assign W19 = W17_sigma1_out + W12 + W4 _sigma0_out + W 3 ;
+   assign W20 = W18_sigma1_out + W13 + W5 _sigma0_out + W 4  ;
+   assign W21 = W19_sigma1_out + W14 + W6 _sigma0_out + W 5 ;
+   assign W22 = W20_sigma1_out + W15 + W7 _sigma0_out + W 6 ;
+   assign W23 = W21_sigma1_out + W16 + W8 _sigma0_out + W 7 ;
+   assign W24 = W22_sigma1_out + W17 + W9 _sigma0_out + W 8 ;
+   assign W25 = W23_sigma1_out + W18 + W10_sigma0_out + W9 ;
    assign W26 = W24_sigma1_out + W19 + W11_sigma0_out + W10;
    assign W27 = W25_sigma1_out + W20 + W12_sigma0_out + W11;
    assign W28 = W26_sigma1_out + W21 + W13_sigma0_out + W12;
@@ -548,41 +645,42 @@ endmodule
 module majority (input logic [31:0] x, y, z, output logic [31:0] maj);
 
    // See Section 2.3.3, Number 4
+   assign maj = (x*y) ^ (x*z) ^ (y*z); 
 
 endmodule // majority
 
 module choice (input logic [31:0] x, y, z, output logic [31:0] ch);
 
    // See Section 2.3.3, Number 4
-
+   assign ch = (x*y) ^ (!x*z);
 
 endmodule // choice
 
 module Sigma0 (input logic [31:0] x, output logic [31:0] Sig0);
 
    // See Section 2.3.3, Number 4
-
+   assign Sig0 = {x[1:0], x[31:2]} ^ {x[12:0], x[31:13]} ^ {x[21:0], x[31:22]}; 
 
 endmodule // Sigma0
 
 module sigma0 (input logic [31:0] x, output logic [31:0] sig0);
 
-      // See Section 2.3.3, Number 2
-   
+   // See Section 2.3.3, Number 2
+   assign sig0 = {x[6:0], x[31:7]} ^ {x[17:0], x[31:18]} ^ {x >> 3};
 
 endmodule // sigma0
 
 module Sigma1 (input logic [31:0] x, output logic [31:0] Sig1);
 
    // See Section 2.3.3, Number 4
-   
+   assign Sig1 = {x[5:0], x[31:6]} ^ {x[10:0], x[31:11]} ^ {x[24:0], {x[31:25]};
 
 endmodule // Sigma1
 
 module sigma1 (input logic [31:0] x, output logic [31:0] sig1);
 
-      // See Section 2.3.3, Number 2
-   
+   // See Section 2.3.3, Number 2
+   assign sig1 = {x[16:0], x[31:17]} ^ {x[18:0], 31:19} ^ (x >> 10);
 
 
 endmodule // sigma1
