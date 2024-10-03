@@ -21,6 +21,9 @@ module sha_padder #(parameter MSG_SIZE = 24,
     output logic [PADDED_SIZE-1:0] padded);
 
    // Pad your output (Section 2.2)
+	localparam zero_width = 512 - 64 -1;
+	localparam back_zero_width = 64 - MSG_SIZE;
+	assign padded = (message, 1'b1, {zero_width{1'b0}}, {back_zero_width{1'b0}}, MSG_SIZE};
 
 endmodule // sha_padder
 
@@ -453,6 +456,7 @@ module prepare (input logic [31:0] M0, M1, M2, M3,
 
    // sigma 1 (see bottom of page 6)
    sigma1 sig1_1 (W14, W14_sigma1_out);
+
 
    // fill in other sigma1 blocks
 
