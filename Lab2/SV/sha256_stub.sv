@@ -622,8 +622,33 @@ module main_comp (input logic [31:0] a_in, b_in, c_in, d_in, e_in, f_in, g_in, h
 		  output logic [31:0] a_out, b_out, c_out, d_out, e_out, f_out, g_out,
 		  output logic [31:0] h_out);
 
-   // Figure 4
+logic [31:0] maj0;
+logic [31:0] ch0;
+logic [31:0] Sig1;
+logic [31:0] Sig0, t1, t2;
+logic [32:0] T1;
+logic [32:0] T2;
 
+majority M0 (a_in, b_in, c_in, maj0);
+choice C0 (e_in, f_in, g_in, ch0);
+Sigma1 S1 (e_in, Sig1);
+Sigma0 S0 (a_in, Sig0);
+   // Figure 4
+   
+   
+   assign T1 = h_in +  Sig1 + ch0 + K_in + W_in;
+   assign T2 = Sig0 + maj0;
+   assign t1 = T1 % 2**32;
+   assign t2 = T2 % 2**32;
+
+   assign a_out = T1 + T2; // might have to add % 2**32
+   assign b_out = a_out;
+   assign c_out = b_out;
+   assign d_out = c_out;
+   assign e_out = d_out + T1; // might have to add % 2**32
+   assign f_out = e_out;
+   assign g_out = f_out;
+   assing h_out = g_out;
 
 endmodule // main_comp
 
@@ -645,14 +670,14 @@ endmodule
 module majority (input logic [31:0] x, y, z, output logic [31:0] maj);
 
    // See Section 2.3.3, Number 4
-   assign maj = (x*y) ^ (x*z) ^ (y*z); 
+   assign maj = (x&y) ^ (x&z) ^ (y&z); 
 
 endmodule // majority
 
 module choice (input logic [31:0] x, y, z, output logic [31:0] ch);
 
    // See Section 2.3.3, Number 4
-   assign ch = (x*y) ^ (!x*z);
+   assign ch = (x&y) ^ (!x&z);
 
 endmodule // choice
 
