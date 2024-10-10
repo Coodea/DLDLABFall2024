@@ -15,15 +15,13 @@ module top #(parameter MSG_SIZE = 24,
    
 endmodule // sha_256
 
-module sha_padder #(parameter MSG_SIZE = 24,	     
-		    parameter PADDED_SIZE = 512) 
-   (input logic [MSG_SIZE-1:0] message,
-    output logic [PADDED_SIZE-1:0] padded);
+module sha_padder #(parameter MSG_SIZE = 24, parameter PADDED_SIZE = 512) 
+   (input logic [MSG_SIZE-1:0] message, output logic [PADDED_SIZE-1:0] padded);
 
    // Pad your output (Section 2.2)
 	localparam zero_width = 512 - 64 -1;
 	localparam back_zero_width = 64 - MSG_SIZE;
-	assign padded = (message, 1'b1, {zero_width{1'b0}}, {back_zero_width{1'b0}}, MSG_SIZE};
+	assign padded = (message, 1'b1, {zero_width{1'b0}}, {back_zero_width{1'b0}}, MSG_SIZE);
 
 endmodule // sha_padder
 
@@ -563,16 +561,16 @@ module prepare (input logic [31:0] M0, M1, M2, M3,
    sigma0 sig0_48 (W48, W48_sigma0_out);
 
    // Equation for _i (wtop of page 7)3
-   assign W16 = W14_sigma1_out + W9 +  W1 _sigma0_out + W0;
-   assign W17 = W15_sigma1_out + W10 + W2 _sigma0_out + W 1 ;
-   assign W18 = W16_sigma1_out + W11 + W3 _sigma0_out + W 2 ;
-   assign W19 = W17_sigma1_out + W12 + W4 _sigma0_out + W 3 ;
-   assign W20 = W18_sigma1_out + W13 + W5 _sigma0_out + W 4  ;
-   assign W21 = W19_sigma1_out + W14 + W6 _sigma0_out + W 5 ;
-   assign W22 = W20_sigma1_out + W15 + W7 _sigma0_out + W 6 ;
-   assign W23 = W21_sigma1_out + W16 + W8 _sigma0_out + W 7 ;
-   assign W24 = W22_sigma1_out + W17 + W9 _sigma0_out + W 8 ;
-   assign W25 = W23_sigma1_out + W18 + W10_sigma0_out + W9 ;
+   assign W16 = W14_sigma1_out + W9 +  W1_sigma0_out + W0;
+   assign W17 = W15_sigma1_out + W10 + W2_sigma0_out + W1;
+   assign W18 = W16_sigma1_out + W11 + W3_sigma0_out + W2;
+   assign W19 = W17_sigma1_out + W12 + W4_sigma0_out + W3;
+   assign W20 = W18_sigma1_out + W13 + W5_sigma0_out + W4;
+   assign W21 = W19_sigma1_out + W14 + W6_sigma0_out + W5;
+   assign W22 = W20_sigma1_out + W15 + W7_sigma0_out + W6;
+   assign W23 = W21_sigma1_out + W16 + W8_sigma0_out + W7;
+   assign W24 = W22_sigma1_out + W17 + W9_sigma0_out + W8;
+   assign W25 = W23_sigma1_out + W18 + W10_sigma0_out + W9;
    assign W26 = W24_sigma1_out + W19 + W11_sigma0_out + W10;
    assign W27 = W25_sigma1_out + W20 + W12_sigma0_out + W11;
    assign W28 = W26_sigma1_out + W21 + W13_sigma0_out + W12;
@@ -648,7 +646,7 @@ Sigma0 S0 (a_in, Sig0);
    assign e_out = d_out + T1; // might have to add % 2**32
    assign f_out = e_out;
    assign g_out = f_out;
-   assing h_out = g_out;
+   assign h_out = g_out;
 
 endmodule // main_comp
 
@@ -698,14 +696,14 @@ endmodule // sigma0
 module Sigma1 (input logic [31:0] x, output logic [31:0] Sig1);
 
    // See Section 2.3.3, Number 4
-   assign Sig1 = {x[5:0], x[31:6]} ^ {x[10:0], x[31:11]} ^ {x[24:0], {x[31:25]};
+   assign Sig1 = {x[5:0], x[31:6]} ^ {x[10:0], x[31:11]} ^ {x[24:0], x[31:25]};
 
 endmodule // Sigma1
 
 module sigma1 (input logic [31:0] x, output logic [31:0] sig1);
 
    // See Section 2.3.3, Number 2
-   assign sig1 = {x[16:0], x[31:17]} ^ {x[18:0], 31:19} ^ (x >> 10);
+   assign sig1 = {x[16:0], x[31:17]} ^ {x[18:0], x[31:19]} ^ {x >> 10};
 
 
 endmodule // sigma1
