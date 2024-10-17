@@ -53,7 +53,7 @@ module sha256 #(parameter PADDED_SIZE = 512)
 
    // Define your intermediate variables here (forgetting them assumes variables are 1-bit)
    logic [31:0]   a, b, c, d, e, f, g, h;
-   logic [31:0] a_in, b_in, c_in, d_in, e_in, f_in, g_in, h_in;
+ //  logic [31:0] a_in, b_in, c_in, d_in, e_in, f_in, g_in, h_in;
    logic [31:0] a_out, b_out, c_out, d_out, e_out, f_out, g_out, h_out;
    logic [31:0] a1_out, b1_out, c1_out, d1_out, e1_out, f1_out, g1_out, h1_out;
    logic [31:0] a2_out, b2_out, c2_out, d2_out, e2_out, f2_out, g2_out, h2_out;
@@ -118,7 +118,7 @@ module sha256 #(parameter PADDED_SIZE = 512)
    logic [31:0] a61_out, b61_out, c61_out, d61_out, e61_out, f61_out, g61_out, h61_out;
    logic [31:0] a62_out, b62_out, c62_out, d62_out, e62_out, f62_out, g62_out, h62_out;
    logic [31:0] a63_out, b63_out, c63_out, d63_out, e63_out, f63_out, g63_out, h63_out;
-   logic [31:0]   h0, h1, h2, h3, h4, h5, h6, h7;
+   logic [31:0] h0, h1, h2, h3, h4, h5, h6, h7;
 
    logic [31:0] W0, W1, W2, W3, W4, W5, W6, W7, W8, W9,
                W10, W11, W12, W13, W14, W15, W16, W17, W18, W19,
@@ -734,7 +734,7 @@ module prepare (input logic [31:0] M0, M1, M2, M3,
    sigma0 sig0_47 (W47, W47_sigma0_out);
    sigma0 sig0_48 (W48, W48_sigma0_out);
 
-   // Equation for _i (wtop of page 7)3
+   // Equation for w_i (top of page 7)3
    assign W16 = W14_sigma1_out + W9 +  W1_sigma0_out + W0;
    assign W17 = W15_sigma1_out + W10 + W2_sigma0_out + W1;
    assign W18 = W16_sigma1_out + W11 + W3_sigma0_out + W2;
@@ -798,9 +798,9 @@ module main_comp (input logic [31:0] a_in, b_in, c_in, d_in, e_in, f_in, g_in, h
 logic [31:0] maj0;
 logic [31:0] ch0;
 logic [31:0] Sig1;
-logic [31:0] Sig0, t1, t2;
-logic [32:0] T1;
-logic [32:0] T2;
+logic [31:0] Sig0;//, t1, t2;
+logic [31:0] T1;
+logic [31:0] T2;
 
 
 majority M0 (a_in, b_in, c_in, maj0);
@@ -812,8 +812,8 @@ Sigma0 S0 (a_in, Sig0);
    
    assign T1 = h_in +  Sig1 + ch0 + K_in + W_in;
    assign T2 = Sig0 + maj0;
-   assign t1 = T1 % 2**32;
-   assign t2 = T2 % 2**32;
+ //  assign t1 = T1 % 2**32;
+ //  assign t2 = T2 % 2**32;
 
    assign a_out = T1 + T2; // might have to add % 2**32
    assign b_out = a_out;
@@ -851,7 +851,7 @@ endmodule // majority
 module choice (input logic [31:0] x, y, z, output logic [31:0] ch);
 
    // See Section 2.3.3, Number 4
-   assign ch = (x&y) ^ (!x&z);
+   assign ch = (x&y) ^ (~x&z);
 
 endmodule // choice
 
@@ -865,7 +865,7 @@ endmodule // Sigma0
 module sigma0 (input logic [31:0] x, output logic [31:0] sig0);
 
    // See Section 2.3.3, Number 2
-   assign sig0 = {x[6:0], x[31:7]} ^ {x[17:0], x[31:18]} ^ {x >> 3};
+   assign sig0 = {x[6:0], x[31:7]} ^ {x[17:0], x[31:18]} ^ (x >> 3);
 
 endmodule // sigma0
 
@@ -879,7 +879,7 @@ endmodule // Sigma1
 module sigma1 (input logic [31:0] x, output logic [31:0] sig1);
 
    // See Section 2.3.3, Number 2
-   assign sig1 = {x[16:0], x[31:17]} ^ {x[18:0], x[31:19]} ^ {x >> 10};
+   assign sig1 = {x[16:0], x[31:17]} ^ {x[18:0], x[31:19]} ^ (x >> 10);
 
 
 endmodule // sigma1
