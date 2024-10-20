@@ -816,13 +816,13 @@ Sigma0 S0 (a_in, Sig0);
  //  assign t2 = T2 % 2**32;
 
    assign a_out = T1 + T2; // might have to add % 2**32
-   assign b_out = a_out;
-   assign c_out = b_out;
-   assign d_out = c_out;
-   assign e_out = d_out + T1; // might have to add % 2**32
-   assign f_out = e_out;
-   assign g_out = f_out;
-   assign h_out = g_out;
+   assign b_out = a_in;
+   assign c_out = b_in;
+   assign d_out = c_in;
+   assign e_out = d_in + T1; // might have to add % 2**32
+   assign f_out = e_in;
+   assign g_out = f_in;
+   assign h_out = g_in;
 
 endmodule // main_comp
 
