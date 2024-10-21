@@ -19,7 +19,7 @@ module mux16x1(input logic[255:0]hashed, input logic[3:0]sel, output logic[15:0]
         4'b1111 : out = hashed[255:240];
         default : out = 16'h0;
     endcase
-
+/* Not sure on this
     mux16x1 m0(hashed, sw[3:0], out0);
     mux16x1 m1(hashed, sw[3:0], out1);
     mux16x1 m2(hashed, sw[3:0], out2);
@@ -36,7 +36,7 @@ module mux16x1(input logic[255:0]hashed, input logic[3:0]sel, output logic[15:0]
     mux16x1 m13(hashed, sw[3:0], out13);
     mux16x1 m14(hashed, sw[3:0], out14);
     mux16x1 m15(hashed, sw[3:0], out15);
-
+*/
 endmodule
 
 /* Goes in driver?
