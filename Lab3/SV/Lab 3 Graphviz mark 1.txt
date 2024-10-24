@@ -1,0 +1,27 @@
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+    node [shape = circle, label="Off\nLC=0, LB=0, LA=0\nRA=0, RB=0, RC=0", fontsize=12] Off;
+    node [shape = circle, label="LCycle1\nLC=0, LB=0, LA=1\nRA=0, RB=0, RC=0", fontsize=12] LCycle1;
+    node [shape = circle, label="LCycle2\nLC=0, LB=1, LA=1\nRA=0, RB=0, RC=0", fontsize=12] LCycle2;
+    node [shape = circle, label="LCycle3\nLC=1, LB=1, LA=1\nRA=0, RB=0, RC=0", fontsize=12] LCycle3;
+    node [shape = circle, label="RCycle1\nLC=0, LB=0, LA=0\nRA=1, RB=0, RC=0", fontsize=12] RCycle1;
+    node [shape = circle, label="RCycle2\nLC=0, LB=0, LA=0\nRA=1, RB=1, RC=0", fontsize=12] RCycle2;
+    node [shape = circle, label="RCycle3\nLC=0, LB=0, LA=0\nRA=1, RB=1, RC=1", fontsize=12] RCycle3;
+    node [shape = circle, label="BCycle1\nLC=0, LB=0, LA=1\nRA=1, RB=0, RC=0", fontsize=12] BCycle1;
+    node [shape = circle, label="BCycle2\nLC=0, LB=1, LA=1\nRA=1, RB=1, RC=0", fontsize=12] BCycle2;
+    node [shape = circle, label="BCycle3\nLC=1, LB=1, LA=1\nRA=1, RB=1, RC=1", fontsize=12] BCycle3;
+    Off -> Off [ label = "L'R'" ];
+    Off -> LCycle1 [ label = "LR'" ];
+    LCycle1 -> LCycle2 [ label = "1" ];
+    LCycle2 -> LCycle3 [ label = "1" ];
+    LCycle3 -> Off [ label = "1" ];
+    Off -> RCycle1 [ label = "L'R" ];
+    RCycle1 -> RCycle2 [ label = "1" ];
+    RCycle2 -> RCycle3 [ label = "1" ];
+    RCycle3 -> Off [ label = "1" ];
+    Off -> BCycle1 [ label = "LR" ];
+    BCycle1 -> BCycle2 [ label = "1" ];
+    BCycle2 -> BCycle3 [ label = "1" ];
+    BCycle3 -> Off [ label = "1" ];
+}
